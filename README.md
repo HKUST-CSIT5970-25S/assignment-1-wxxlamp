@@ -18,7 +18,7 @@
 
 1. (1 mark) Report the name of measurement tool used in your measurements (you are free to choose *any* open source measurement software as long as it can measure CPU and memory performance). Please describe your configuration of the measurement tool, and explain why you set such a value for each parameter. Explain what the values obtained from measurement results represent (e.g., the value of your measurement result can be the execution time for a scientific computing task, a score given by the measurement tools or something else).
 
-    > <u>**Measurement Tool**: Phoronix Test Suite
+    > <u style="color: skyblue">**Measurement Tool**: Phoronix Test Suite
 
     > **Configuration**: I configured Phoronix Test Suite by running two specific tests using the following commands:
     > 1. `phoronix-test-suite run pts/compress-7zip`: measures CPU performance by assessing the number of instructions processed per second during file compression using the 7-Zip algorithm.
@@ -42,7 +42,7 @@
 
     > Region: US East (N. Virginia). Use `Ubuntu Server 22.04 LTS (HVM)` as AMI.
 
-     <u>According to the the experience result, We can find t2.medium's performance is the best while t2.micro's is the worst cause the configuration of t2.micro is worst. So we can draw a preliminary conclusion: the performance of EC2 instances generally increases with the addtion of more VCPUs and memory. However, the performance of c5d.large is lower than t2.medium although they have same number of VCPU and memory. Why?
+     <u style="color: skyblue">According to the the experience result, We can find `t2.medium`'s performance is the best while `t2.micro`'s is the worst cause the configuration of `t2.micro` is worst. So we can draw a preliminary conclusion: the performance of EC2 instances generally increases with the addtion of more VCPUs and memory. However, the performance of `c5d.large` is lower than `t2.medium` although they have same number of VCPU and memory. Why?
 
     We can find a table in AWS document:
 
@@ -52,7 +52,7 @@
     | `t2.medium`  |  2 |        4         | 2|1|
     | `c5d.large` |  2  |       4          | 1|2|
 
-    So, one possible reason is the core number of t2.medium is double to it of c5d.large. It means even if the EC2 instance A has more VCPUS and memory than B, it's possible that A'performance is lower than B cause there are other important factors such as thread. So we can generate the final conclusion: **Only when other FACTORs is unchanging, the performance of EC2 instances generally increases with the addtion of more VCPUs and memory** </u>
+    So, one possible reason is the core number of `t2.medium` is double to it of c5d.large. It means even if the EC2 instance A has more VCPUS and memory than B, it's possible that A'performance is lower than B cause there are other important factors such as thread. So we can generate the final conclusion: **Only when other FACTORs is unchanging, the performance of EC2 instances generally increases with the addtion of more VCPUs and memory** </u>
 
 ## Question 2: Measure the EC2 Network performance
 
@@ -69,7 +69,7 @@
 
     > Region: US East (N. Virginia). Use `Ubuntu Server 22.04 LTS (HVM)` as AMI. Note: Use private IP address when using iPerf within the same region. You'll need iPerf for measuring TCP bandwidth and Ping for measuring Round-Trip time.
 
-    <u>In the same region, the netwwork performance between instances of the same type is better than it of the different type. For example, `m5.larg`e` connects to `c5n.large` is slowly while `m5.large` connects to another `m5.large` is quickly</u>
+    <u style="color: skyblue">In the same region, the netwwork performance between instances of the same type is better than it of the different type. For example, `m5.larg`e` connects to `c5n.large` is slowly while `m5.large` connects to another `m5.large` is quickly</u>
 
 2. (1 mark) What about the network performance for instances deployed in different regions? In order to answer this question, you need to complete the following table.
 
@@ -81,4 +81,4 @@
 
     > Region: US East (N. Virginia), US West (Oregon). Use `Ubuntu Server 22.04 LTS (HVM)` as AMI. All instances are `c5.large`. Note: Use public IP address when using iPerf within the same region.
 
-    <u>The connection speed of the EC2 instance in different regions is an order of magnitude slower than the connection speed in the same region. It means we must deploy the instances, databases and other resources in the same region to achieve better performance.</u>
+    <u style="color: skyblue">The connection speed of the EC2 instance in different regions is an order of magnitude slower than the connection speed in the same region. It means we must deploy the instances, databases and other resources in the same region to achieve better performance.</u>
