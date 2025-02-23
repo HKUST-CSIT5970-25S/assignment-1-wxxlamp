@@ -18,7 +18,17 @@
 
 1. (1 mark) Report the name of measurement tool used in your measurements (you are free to choose *any* open source measurement software as long as it can measure CPU and memory performance). Please describe your configuration of the measurement tool, and explain why you set such a value for each parameter. Explain what the values obtained from measurement results represent (e.g., the value of your measurement result can be the execution time for a scientific computing task, a score given by the measurement tools or something else).
 
-    > Your answer goes here.
+    > **Measurement Tool**: Phoronix Test Suite
+
+    > **Configuration**: I configured Phoronix Test Suite by running two specific tests using the following commands:
+    > 1. `phoronix-test-suite run pts/compress-7zip`: measures CPU performance by assessing the number of instructions processed per second during file compression using the 7-Zip algorithm.
+    > 2. `phoronix-test-suite run pts/ramspeed`: assesses memory performance by benchmarking memory bandwidth and speed. Additionally, I choose the AVERAGE and INTEGER Option to evaluate the average performance when processing Interger operation in memory.
+    
+    > **Default Parameters**: I utilized the default settings for both tests to ensure standardized and reliable benchmarking results. This approach avoids introducing variables that could affect the comparability of the measurements.
+
+    > **Explanation of Measurement Values**:
+    > 1. For CPU performance measurement, I choose MIPS, which means the numbers of million instructions per second processed by CPU when processing the task. It can evaluate the performance of CPU.
+    > 2. For memory performance measurement, I choose the speed to evaluate the performance of memory. The speeder, the performance higher.
 
 2. (1 mark) Run your measurement tool on general purpose `t2.micro`, `t2.medium`, and `c5d.large` Linux instances, respectively, and find the performance differences among these instances. Launch all the instances in the **US East (N. Virginia)** region. Does the performance of EC2 instances increase commensurate with the increase of the number of vCPUs and memory resource?
 
@@ -26,9 +36,21 @@
 
     | Size        | CPU performance | Memory performance |
     | ----------- | --------------- | ------------------ |
-    | `t2.micro` |                 |                    |
-    | `t2.medium`  |                 |                    |
-    | `c5d.large` |                 |                    |
+    | `t2.micro` |     3153 MIPS    |       10371.80 MB/s             |
+    | `t2.medium`  |  100052 MIPS   |       19108.55 MB/s            |
+    | `c5d.large` |   7526 MIPS     |       13918.95 MB/s             |
+
+    According to the the experience result, We can find t2.medium's performance is best while t2.micro's is worst cause the configuration of t2.micro is worst. So we can draw a preliminary conclusion: the performance of EC2 instances generally increases with the addtion of more VCPUs and memory. However, the performance of c5d.large is lower than t2.medium although they have same number of VCPU and memory. Why?
+
+    We can find a table in AWS document:
+
+    | Size        | VCPU | Memory(GiB) | Cores | Threads per core |
+    | ----------- | --------------- | ------------------ | -- | --|
+    | `t2.micro` |    1   |       1             |1 |1|
+    | `t2.medium`  |  2 |        4         | 2|1|
+    | `c5d.large` |  2  |       4          | 1|2|
+
+    So, one possible reason is the core number of t2.medium is double to it of c5d.large. It means even if the EC2 instance A has more VCPUS and memory than B, it's possible that A'performance is lower than B cause there are other important factors such as thread. So we can generate the final conclusion: **Only when other FACTORs is unchanging, the performance of EC2 instances generally increases with the addtion of more VCPUs and memory**
 
     > Region: US East (N. Virginia). Use `Ubuntu Server 22.04 LTS (HVM)` as AMI.
 
