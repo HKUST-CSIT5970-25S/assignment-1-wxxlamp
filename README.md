@@ -1,13 +1,16 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/IAASVEAZ)
+
 # CSIT5970 Assignment-1: EC2 Measurement (2 questions, 4 marks)
 
 ### Deadline: 11:59PM, Feb, 28, Friday
 
 ---
 
-### Name: 
-### Student Id: 
-### Email: 
+### Name: WANG, Shibo
+
+### Student Id: 21143036
+
+### Email: swanggi@connect.ust.hk
 
 ---
 
@@ -51,5 +54,5 @@
     | N. Virginia - Oregon      |                |          |
     | N. Virginia - N. Virginia |                |          |
     | Oregon - Oregon           |                |          |
- 
+
     > Region: US East (N. Virginia), US West (Oregon). Use `Ubuntu Server 22.04 LTS (HVM)` as AMI. All instances are `c5.large`. Note: Use public IP address when using iPerf within the same region.
